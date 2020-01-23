@@ -16,7 +16,7 @@ public class CounterTest {
         int start = 1;
         int finish = 10;
         int expected = 30;
-        int out = check.add(start,finish);
+        int out = check.add(start, finish);
         Assert.assertEquals(expected, out);
     }
 }
