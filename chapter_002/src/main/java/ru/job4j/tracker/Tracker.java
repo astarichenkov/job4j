@@ -50,7 +50,7 @@ public class Tracker {
     public Item[] findByName(String key) {
         int size = 0;
         Item[] result = new Item[this.items.length];
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i < this.position; i++) {
             if (this.items[i] != null) {
                 if (this.items[i].getName().equals(key)) {
                     result[size] = this.items[i];
@@ -58,24 +58,14 @@ public class Tracker {
                 }
             }
         }
-        result = Arrays.copyOf(result, size);
-        return result;
+        return Arrays.copyOf(result, size);
     }
 
     /**
      * Получение списка всех заявок.
      */
     public Item[] findAll(String key) {
-        int size = 0;
-        Item[] result = new Item[this.items.length];
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null) {
-                result[size] = this.items[i];
-                size++;
-            }
-        }
-        result = Arrays.copyOf(result, size);
-        return result;
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -88,6 +78,6 @@ public class Tracker {
                 return this.items[i];
             }
         }
-        return new Item("Не найдено");
+        return null;
     }
 }
