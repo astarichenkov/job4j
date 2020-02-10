@@ -51,11 +51,9 @@ public class Tracker {
         int size = 0;
         Item[] result = new Item[this.items.length];
         for (int i = 0; i < this.position; i++) {
-            if (this.items[i] != null) {
-                if (this.items[i].getName().equals(key)) {
-                    result[size] = this.items[i];
-                    size++;
-                }
+            if (this.items[i].getName().equals(key)) {
+                result[size] = this.items[i];
+                size++;
             }
         }
         return Arrays.copyOf(result, size);
@@ -73,11 +71,12 @@ public class Tracker {
      * сравнивая id с аргументом String id и возвращает найденный Item. Если Item не найден - возвращает null.
      */
     public Item findById(String key) {
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i < this.position; i++) {
             if (this.items[i].getId().equals(key)) {
                 return this.items[i];
             }
         }
         return null;
     }
+
 }
