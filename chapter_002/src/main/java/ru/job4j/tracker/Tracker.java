@@ -71,12 +71,30 @@ public class Tracker {
      * сравнивая id с аргументом String id и возвращает найденный Item. Если Item не найден - возвращает null.
      */
     public Item findById(String key) {
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i].getId().equals(key)) {
-                return this.items[i];
+        return items[indexOf(key)];
+    }
+
+    /**
+     * метод, который будет возвращать index по id.
+     *
+     * @param id
+     */
+
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                rsl = index;
+                break;
             }
         }
-        return null;
+        return rsl;
     }
+
+    public void replace(String id, Item item) {
+        int index = indexOf(id);
+        this.items[index].setName(item.getName());
+    }
+
 
 }

@@ -24,4 +24,8 @@ public class Book {
         this.name = name;
         this.numberOfPages = numberOfPages;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
