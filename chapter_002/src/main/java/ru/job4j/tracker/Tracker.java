@@ -91,9 +91,13 @@ public class Tracker {
         return rsl;
     }
 
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
         int index = indexOf(id);
+        if (index == -1) {
+            return false;
+        }
         this.items[index].setName(item.getName());
+        return true;
     }
 
 
