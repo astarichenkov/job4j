@@ -11,7 +11,7 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final Item[] items = new Item[100];
+    public final Item[] items = new Item[5];
 
     /**
      * Указатель ячейки для новой заявки.
@@ -96,9 +96,12 @@ public class Tracker {
         if (index == -1) {
             return false;
         }
-        this.items[index].setName(item.getName());
+        this.items[index] = item;
+        this.items[index].setId(id);
         return true;
     }
-
-
 }
+
+
+
+
