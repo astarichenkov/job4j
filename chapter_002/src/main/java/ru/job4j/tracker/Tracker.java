@@ -70,8 +70,14 @@ public class Tracker {
      * Метод public Item findById(String id) проверяет в цикле все элементы массива this.items,
      * сравнивая id с аргументом String id и возвращает найденный Item. Если Item не найден - возвращает null.
      */
+
     public Item findById(String key) {
-        return items[indexOf(key)];
+        for (int i = 0; i < position; i++) {
+            if (this.items[i] != null && this.items[i].getId().equals(key)) {
+                return this.items[i];
+            }
+        }
+        return null;
     }
 
     /**
@@ -98,6 +104,16 @@ public class Tracker {
         }
         this.items[index] = item;
         this.items[index].setId(id);
+        return true;
+    }
+
+    public boolean delete(String id) {
+        int distPos = indexOf(id);
+        if (distPos == -1) {
+            return false;
+        }
+        items[distPos] = null;
+        position--;
         return true;
     }
 }
