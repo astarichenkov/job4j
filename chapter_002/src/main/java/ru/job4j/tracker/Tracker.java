@@ -100,6 +100,13 @@ public class Tracker {
         this.items[index].setId(id);
         return true;
     }
+
+    public void delete(String id) {
+        System.arraycopy(items, indexOf(id), items, indexOf(id), position - indexOf(id));
+        items[position] = null;
+        position--;
+
+    }
 }
 
 
