@@ -65,8 +65,10 @@ public class TrackerTest {
     public void whenDelete() {
         Tracker tracker = new Tracker();
         Item bug = new Item("Bug");
+        Item bug2 = new Item("Bug");
         tracker.add(bug);
-        String id = bug.getId();
+        tracker.add(bug2);
+        String id = bug2.getId();
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
     }
