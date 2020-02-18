@@ -45,7 +45,7 @@ public class TrackerTest {
         tracker.add(item2);
         tracker.add(item3);
         Item[] expected = new Item[]{item1, item2, item3};
-        Item[] result = tracker.findAll("test1");
+        Item[] result = tracker.findAll();
         assertThat(result, is(expected));
     }
 

@@ -62,7 +62,7 @@ public class Tracker {
     /**
      * Получение списка всех заявок.
      */
-    public Item[] findAll(String key) {
+    public Item[] findAll() {
         return Arrays.copyOf(items, position);
     }
 
@@ -74,7 +74,7 @@ public class Tracker {
     public Item findById(String key) {
         int index = indexOf(key);
         if (index != -1) {
-            return this.items[indexOf(key)];
+            return this.items[index];
         }
         return null;
     }
@@ -108,11 +108,13 @@ public class Tracker {
 
     public boolean delete(String id) {
         int distPos = indexOf(id);
+        int start = distPos + 1;
+        int size = position - distPos;
         if (distPos == -1) {
             return false;
         }
-        System.arraycopy(items, distPos, items, distPos, position - distPos);
-        items[distPos] = null;
+        System.arraycopy(items, start, items, distPos, size);
+        items[position] = null;
         position--;
         return true;
     }
