@@ -72,10 +72,9 @@ public class Tracker {
      */
 
     public Item findById(String key) {
-        for (int i = 0; i < position; i++) {
-            if (this.items[i] != null && this.items[i].getId().equals(key)) {
-                return this.items[i];
-            }
+        int index = indexOf(key);
+        if (index != -1) {
+            return this.items[indexOf(key)];
         }
         return null;
     }
@@ -112,6 +111,7 @@ public class Tracker {
         if (distPos == -1) {
             return false;
         }
+        System.arraycopy(items, distPos, items, distPos, position - distPos);
         items[distPos] = null;
         position--;
         return true;
