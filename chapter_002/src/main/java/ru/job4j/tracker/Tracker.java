@@ -74,7 +74,7 @@ public class Tracker {
     public Item findById(String key) {
         int index = indexOf(key);
         if (index != -1) {
-            return this.items[indexOf(key)];
+            return this.items[index];
         }
         return null;
     }

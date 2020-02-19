@@ -18,39 +18,55 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 tracker.add(item);
+                System.out.println("Item added");
+                System.out.println();
+
             } else if (select == 1) {
                 Item[] items = tracker.findAll("");
                 for (int i = 0; i < items.length; i++) {
                     System.out.print(items[i].getName() + ", Id:");
                     System.out.println(items[i].getId());
                 }
+                System.out.println();
+
             } else if (select == 2) {
                 System.out.print("Enter Id: ");
                 id = scanner.nextLine();
                 System.out.print("Enter new item name: ");
                 String newId = scanner.nextLine();
-
                 if (tracker.replace(id, new Item(newId))) {
                     System.out.println("Item was replaced");
+                    System.out.println();
                 } else {
                     System.out.println("Error");
+                    System.out.println();
                 }
 
             } else if (select == 3) {
                 System.out.println("Enter item Id: ");
                 id = scanner.nextLine();
-
                 if (tracker.delete(id)) {
                     System.out.println("Item was deleted");
+                    System.out.println();
                 } else {
                     System.out.println("Error");
+                    System.out.println();
                 }
+
             } else if (select == 4) {
                 System.out.println("Enter item Id: ");
-                tracker.findById(scanner.nextLine());
+                System.out.println(tracker.findById(scanner.nextLine()));
+                System.out.println();
+
+
             } else if (select == 5) {
                 System.out.println("Enter name: ");
-                tracker.findByName(scanner.nextLine());
+                Item[] items = tracker.findByName(scanner.nextLine());
+                for (int i = 0; i < items.length; i++) {
+                    System.out.println(items[i]);
+                }
+                System.out.println();
+
             } else if (select == 6) {
                 run = false;
             }
