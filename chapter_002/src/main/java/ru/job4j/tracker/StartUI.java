@@ -7,6 +7,7 @@ public class StartUI {
 
     public void init(Scanner scanner, Tracker tracker) {
         boolean run = true;
+        String id;
         while (run) {
             this.showMenu();
             System.out.print("Select: ");
@@ -24,12 +25,26 @@ public class StartUI {
                     System.out.println(items[i].getId());
                 }
             } else if (select == 2) {
-                System.out.println("Enter Id: ");
-                System.out.println("Enter new item name: ");
-                tracker.replace(scanner.nextLine(), new Item(scanner.nextLine()));
+                System.out.print("Enter Id: ");
+                id = scanner.nextLine();
+                System.out.print("Enter new item name: ");
+                String newId = scanner.nextLine();
+
+                if (tracker.replace(id, new Item(newId))) {
+                    System.out.println("Item was replaced");
+                } else {
+                    System.out.println("Error");
+                }
+
             } else if (select == 3) {
                 System.out.println("Enter item Id: ");
-                tracker.delete(scanner.nextLine());
+                id = scanner.nextLine();
+
+                if (tracker.delete(id)) {
+                    System.out.println("Item was deleted");
+                } else {
+                    System.out.println("Error");
+                }
             } else if (select == 4) {
                 System.out.println("Enter item Id: ");
                 tracker.findById(scanner.nextLine());
@@ -58,6 +73,9 @@ public class StartUI {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Tracker tracker = new Tracker();
+        tracker.add(new Item("Item1"));
+        tracker.add(new Item("Item222"));
+        tracker.add(new Item("Item33"));
         new StartUI().init(scanner, tracker);
     }
 }
