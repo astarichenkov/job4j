@@ -22,7 +22,7 @@ public class StartUI {
                 System.out.println();
 
             } else if (select == 1) {
-                Item[] items = tracker.findAll("");
+                Item[] items = tracker.findAll();
                 for (int i = 0; i < items.length; i++) {
                     System.out.print(items[i].getName() + ", Id:");
                     System.out.println(items[i].getId());
@@ -38,7 +38,7 @@ public class StartUI {
                     System.out.println("Item was replaced");
                     System.out.println();
                 } else {
-                    System.out.println("Error");
+                    System.out.println("Item not found");
                     System.out.println();
                 }
 
@@ -49,21 +49,28 @@ public class StartUI {
                     System.out.println("Item was deleted");
                     System.out.println();
                 } else {
-                    System.out.println("Error");
+                    System.out.println("Item not found");
                     System.out.println();
                 }
 
             } else if (select == 4) {
                 System.out.println("Enter item Id: ");
-                System.out.println(tracker.findById(scanner.nextLine()));
-                System.out.println();
-
+                Item item = tracker.findById(scanner.nextLine());
+                if (item != null) {
+                    System.out.print(item.getName() + ", Id:");
+                    System.out.println(item.getId());
+                    System.out.println();
+                } else {
+                    System.out.println("Item not found");
+                    System.out.println();
+                }
 
             } else if (select == 5) {
                 System.out.println("Enter name: ");
                 Item[] items = tracker.findByName(scanner.nextLine());
                 for (int i = 0; i < items.length; i++) {
-                    System.out.println(items[i]);
+                    System.out.print(items[i].getName() + ", Id:");
+                    System.out.println(items[i].getId());
                 }
                 System.out.println();
 
