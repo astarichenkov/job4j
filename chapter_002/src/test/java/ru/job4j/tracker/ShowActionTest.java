@@ -22,7 +22,7 @@ public class ShowActionTest {
         ShowAction act = new ShowAction();
         act.execute(new StubInput(new String[] {}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add(item.getName() + ", Id:" + item.getId() + "\r\n")
+                .add(item.getName() + ", Id:" + item.getId() + System.lineSeparator())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);
