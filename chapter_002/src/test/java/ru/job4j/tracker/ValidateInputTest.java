@@ -30,12 +30,12 @@ public class ValidateInputTest {
         ByteArrayOutputStream mem = new ByteArrayOutputStream();
         PrintStream out = System.out;
         System.setOut(new PrintStream(mem));
-        String[] data = {"6", "6"};
+        String[] data = {"6", "0"};
         ValidateInput input = new ValidateStubInput(data);
-        input.askInt("6", 7);
+        input.askInt("Enter", 1);
         assertThat(
                 mem.toString(),
-                is(String.format("Program exit.%n"))
+                is(String.format("Please select key from menu.%n"))
         );
         System.setOut(out);
     }
