@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.core.IsNull.nullValue;
 
@@ -30,8 +31,10 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        Item[] expected = new Item[]{item1, item3};
-        Item[] result = tracker.findByName("test1");
+        List<Item> expected = new ArrayList<Item>();
+        expected.add(item1);
+        expected.add(item3);
+        List<Item> result = tracker.findByName("test1");
         assertThat(result, is(expected));
     }
 
@@ -44,8 +47,11 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        Item[] expected = new Item[]{item1, item2, item3};
-        Item[] result = tracker.findAll();
+        List<Item> expected = new ArrayList<Item>();
+        expected.add(item1);
+        expected.add(item2);
+        expected.add(item3);
+        List<Item> result = tracker.findAll();
         assertThat(result, is(expected));
     }
 
