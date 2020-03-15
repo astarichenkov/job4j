@@ -99,7 +99,8 @@ public class Tracker {
         if (index == -1) {
             return false;
         }
-        this.items.get(index).setName(item.getName());
+        item.setId(id);
+        this.items.set(index, item);
         return true;
     }
 
