@@ -9,11 +9,12 @@ import static org.junit.Assert.assertThat;
 
 public class JobTest {
     @Test
-    public void whenCompatorByNameAndPrority() {
+    public void whenCompatorByNameAndPriority() {
         Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
         int rsl = cmpNamePriority.compare(
-                new Job("Impl task", 0),
-                new Job("Fix bug", 1)
+                new Job("2", 1),
+                new Job("1", 2)
+
         );
         assertThat(rsl, lessThan(0));
     }
