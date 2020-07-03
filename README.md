@@ -1,7 +1,3 @@
-Я начал курс в январе 2020, планирую закончить в июне 2020.
+[![Build Status](https://travis-ci.org/astarichenkov/job4j.svg?branch=master)](https://travis-ci.org/astarichenkov/job4j)
+[![codecov](https://codecov.io/gh/astarichenkov/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/astarichenkov/job4j)
 
-"Объединение зафиксированных изменений 2"
-
-В курсе производилась работа с веткамы git.
-
-Создание ветки из IDEA
