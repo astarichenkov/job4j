@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class StudentsMap {
     public Map<String, Student> getStudentsMap(ArrayList<Student> students) {
         return students.stream()
+                .distinct()
                 .collect(
                         Collectors.toMap(
                                 Student::getSurname,

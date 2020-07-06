@@ -9,8 +9,9 @@ import static org.junit.Assert.assertThat;
 
 public class StudentsMapTest {
     @Test
-    public void whenThreeStudents() {
+    public void whenThreeStudentsAndDuplicates() {
         ArrayList<Student> students = new ArrayList<Student>(Arrays.asList(
+                new Student("Baranov", 98),
                 new Student("Baranov", 98),
                 new Student("Evseeva", 81),
                 new Student("Smolina", 87)));
