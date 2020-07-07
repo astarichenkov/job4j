@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -13,33 +10,33 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null && !users.get(user).contains(account)) {
-            users.get(user).add(account);
-        }
+        users.keySet()
+                .stream()
+                .filter(user -> user.getPassport().equals(passport))
+                .findFirst()
+                .ifPresent(user -> this.users.get(user).add(account));
     }
 
     public User findByPassport(String passport) {
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                return user;
-            }
+        return users.keySet()
+                .stream()
+                .filter(user -> user.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Account findByRequisite(String passport, String requisite) {
+        User user = this.findByPassport(passport);
+        if (user != null) {
+            List<Account> accounts = this.users.get(user);
+            return accounts.stream().filter(x -> x.getRequisite()
+                    .equals(requisite)).findFirst().orElse(null);
         }
         return null;
     }
 
-    public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            List<Account> userAccounts = users.get(user);
-            for (Account account : userAccounts) {
-                if (account.getRequisite().equals(requisite)) {
-                    return account;
-                }
-            }
-        }
-        return null;
-    }
+
+
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
