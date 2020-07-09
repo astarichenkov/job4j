@@ -17,26 +17,31 @@ public class BankService {
                 .ifPresent(user -> this.users.get(user).add(account));
     }
 
-    public User findByPassport(String passport) {
-        return users.keySet()
+    public Optional<User> findByPassport(String passport) {
+        Optional<User> rsl;
+        rsl = users.keySet()
                 .stream()
                 .filter(user -> user.getPassport().equals(passport))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
+        return rsl;
     }
 
-    public Account findByRequisite(String passport, String requisite) {
-        Optional user = Optional.of(this.findByPassport(passport));
-            List<Account> accounts = this.users.get(user.get());
-            return accounts.stream().filter(x -> x.getRequisite()
-                    .equals(requisite)).findFirst().orElse(null);
+    public Optional<Account> findByRequisite(String passport, String requisite) {
+        Optional<Account> rsl;
+        Optional<User> user = this.findByPassport(passport);
+        List<Account> accounts = this.users.get(user.get());
+        rsl = accounts.stream()
+                .filter(x -> x.getRequisite()
+                        .equals(requisite))
+                .findFirst();
+        return rsl;
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
-        Account srcAccount = findByRequisite(srcPassport, srcRequisite);
-        Account dstAccount = findByRequisite(destPassport, destRequisite);
-        if (srcAccount == null || dstAccount == null || srcAccount.getBalance() - amount < 0) {
+        Account srcAccount = findByRequisite(srcPassport, srcRequisite).get();
+        Account dstAccount = findByRequisite(destPassport, destRequisite).get();
+        if (srcAccount.getBalance() - amount < 0) {
             return false;
         }
         srcAccount.setBalance(srcAccount.getBalance() - amount);
