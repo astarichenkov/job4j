@@ -4,31 +4,20 @@ import java.util.*;
 
 public class Departments {
     public static List<String> fillGaps(List<String> deps) {
-        HashSet<String> tmp = new HashSet<>();
+        Set<String> tmp = new LinkedHashSet<>();
         for (String value : deps) {
-            ArrayList<String> list = new ArrayList<>(Arrays.asList(value.split("/")));
-            for (String el : list) {
-                tmp.add(el);
-                if (el.startsWith("s")) {
-                    tmp.add(el.substring(1));
+            String start = "";
+            for (String el : value.split("/")) {
+                if (start.equals("")) {
+                    start = el;
+                } else {
+                    start += "/" + el;
                 }
+                tmp.add(start);
             }
         }
-        ArrayList<String> tmpList = new ArrayList<>(tmp);
-        Collections.sort(tmpList);
-        ArrayList<String> result2 = new ArrayList<>();
-        String str = "";
-        for (int i = 0; i < tmp.size(); i++) {
-            if (i != 0) {
-                str = str + "/" + tmpList.get(i);
-                result2.add(str);
-            } else {
-                str = tmpList.get(i);
-                result2.add(str);
-            }
-        }
-
-        return result2;
+        System.out.println(tmp);
+        return new ArrayList<>(tmp);
     }
 
     public static void sortAsc(List<String> orgs) {
