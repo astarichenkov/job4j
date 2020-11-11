@@ -10,7 +10,7 @@ public class DepDescComp implements Comparator<String> {
         ArrayList<String> list1 = new ArrayList<>(Arrays.asList(o1.split("/")));
         ArrayList<String> list2 = new ArrayList<>(Arrays.asList(o2.split("/")));
         String el1 = list1.get(0);
-        String el2 = list1.get(0);
+        String el2 = list2.get(0);
         int rsl = el1.compareTo(el2);
         if (rsl != 0) {
             return rsl;

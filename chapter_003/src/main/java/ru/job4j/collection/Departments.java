@@ -26,6 +26,8 @@ public class Departments {
 
     public static void sortDesc(List<String> orgs) {
         Comparator comparator = new DepDescComp();
+        System.out.println(orgs);
         Collections.sort(orgs, comparator);
+        System.out.println(orgs);
     }
 }
