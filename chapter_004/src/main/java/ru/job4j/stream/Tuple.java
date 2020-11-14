@@ -24,4 +24,12 @@ public class Tuple {
     public int hashCode() {
         return Objects.hash(name, score);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getScore() {
+        return score;
+    }
 }
